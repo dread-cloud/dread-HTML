@@ -1513,9 +1513,6 @@
   flex-direction: row;
   justify-content: space-between;
 }
-.home-text132 {
-  color: rgb(255, 255, 255);
-}
 .home-icon10 {
   width: 24px;
   height: 24px;
@@ -1770,12 +1767,6 @@
     flex-direction: column;
     justify-content: space-between;
   }
-  .home-text132 {
-    margin-bottom: var(--dl-space-space-oneandhalfunits);
-  }
-  .home-text133 {
-    margin-bottom: var(--dl-space-space-oneandhalfunits);
-  }
 }
 @media(max-width: 479px) {
   .home-navbar-interactive {
@@ -1842,13 +1833,5 @@
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
-  }
-  .home-text132 {
-    text-align: center;
-    margin-bottom: var(--dl-space-space-oneandhalfunits);
-  }
-  .home-text133 {
-    text-align: center;
-    margin-bottom: var(--dl-space-space-oneandhalfunits);
   }
 }
