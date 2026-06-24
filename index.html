@@ -1,783 +1,481 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>dread.cloud</title>
-    <meta
-      name="description"
-      content="dread.cloud - Your Ultimate Gaming Servers and Bare Metal VPS Solution"
-    />
-    <meta property="og:title" content="dread.cloud" />
-    <meta
-      property="og:description"
-      content="dread.cloud - Your Ultimate Gaming Servers and Bare Metal VPS Solution"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8" />
-    <meta property="twitter:card" content="summary_large_image" />
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>dread.cloud — bare metal, uncapped</title>
+<meta name="description" content="dread.cloud — high-performance bare metal & VPS for game-server networks and sysadmins. NA · EU · SG. Whitelist only." />
+<meta property="og:title" content="dread.cloud" />
+<meta property="og:description" content="High-performance bare metal & VPS. NA · EU · SG. Whitelist only." />
+<meta name="theme-color" content="#000000" />
+<script>document.documentElement.classList.add('js')</script>
+<link rel="icon" href="favicon.png" type="image/png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --bg:#000000;
+    --fg:#ffffff;
+    --dim:rgba(255,255,255,.52);
+    --faint:rgba(255,255,255,.30);
+    --line:rgba(255,255,255,.14);
+    --line-strong:rgba(255,255,255,.30);
+    --panel:#0b0b0b;
+    --panel-2:#101010;
+    --maxw:1240px;
+    --pad:clamp(20px,5vw,72px);
+    --display:'Space Grotesk',system-ui,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --mark:url(./mark.png);
+    --chip:url(./chip-mono.png);
+  }
+  /* light / inverted contrast mode */
+  html[data-contrast="light"]{
+    --bg:#ffffff; --fg:#000000;
+    --dim:rgba(0,0,0,.55); --faint:rgba(0,0,0,.32);
+    --line:rgba(0,0,0,.14); --line-strong:rgba(0,0,0,.32);
+    --panel:#f5f5f3; --panel-2:#eeeeec;
+  }
 
-    <style data-tag="reset-style-sheet">
-      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
-    </style>
-    <style data-tag="default-style-sheet">
-      html {
-        font-family: Inter;
-        font-size: 16px;
-      }
+  *{box-sizing:border-box;border:0 solid var(--line);margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg);color:var(--fg);
+    font-family:var(--display);font-weight:400;line-height:1.5;
+    overflow-x:hidden;
+    transition:background .4s ease,color .4s ease;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  ::selection{background:var(--fg);color:var(--bg)}
 
-      body {
-        font-weight: 400;
-        font-style:normal;
-        text-decoration: none;
-        text-transform: none;
-        letter-spacing: normal;
-        line-height: 1.15;
-        color: var(--dl-color-gray-black);
-        background-color: var(--dl-color-gray-white);
+  /* ============ BG CANVAS ============ */
+  #rain{position:fixed;inset:0;z-index:0;opacity:.16;pointer-events:none}
+  html[data-contrast="light"] #rain{opacity:.10}
+  .grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.5;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
 
-      }
-    </style>
-    <link
-      rel="shortcut icon"
-      href="public/favicon-32x32.png"
-      type="icon/png"
-      sizes="32x32"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
-    />
-    <style>
-      @keyframes fade-in-left {
-        0% {
-          opacity: 0;
-          transform: translateX(-20px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <link rel="stylesheet" href="./style.css" />
-    <div>
-      <link href="./index.css" rel="stylesheet" />
+  .wrap{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
 
-      <div class="home-container">
-        <div class="home-header">
-          <header data-thq="thq-navbar" class="home-navbar-interactive">
-            <span class="home-logo">dread.cloud</span>
-            <div data-thq="thq-navbar-nav" class="home-desktop-menu">
-              <nav class="home-links">
-                <span>Home</span>
-                <span class="home-nav2">Features</span>
-                <span class="home-nav3">Pricing</span>
-                <span class="home-nav4">FAQ</span>
-              </nav>
-              <div class="home-buttons">
-                <button class="home-register button">
-                  <a href="mailto:order@dread.cloud?subject=" class="home-link">
-                    <span class="home-text">Contact</span>
-                    <br />
-                  </a>
-                </button>
-              </div>
-            </div>
-            <div data-thq="thq-burger-menu" class="home-burger-menu">
-              <svg viewBox="0 0 1024 1024" class="home-icon">
-                <path
-                  d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
-                ></path>
-              </svg>
-            </div>
-            <div data-thq="thq-mobile-menu" class="home-mobile-menu">
-              <div class="home-nav">
-                <div class="home-top">
-                  <span class="home-logo1">DREAD</span>
-                  <div data-thq="thq-close-menu" class="home-close-menu">
-                    <svg viewBox="0 0 1024 1024" class="home-icon02">
-                      <path
-                        d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
-                      ></path>
-                    </svg>
-                  </div>
-                </div>
-                <nav class="home-links1">
-                  <span class="home-nav11">Home</span>
-                  <span class="home-nav21">Features</span>
-                  <span class="home-nav31">Pricing</span>
-                  <span class="home-nav41">FAQ</span>
-                  <span class="home-nav5">Contact</span>
-                </nav>
-                <div class="home-buttons1">
-                  <button class="home-login button">Login</button>
-                  <button class="home-register1 button">Register</button>
-                </div>
-              </div>
-              <div>
-                <svg viewBox="0 0 950.8571428571428 1024" class="home-icon04">
-                  <path
-                    d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"
-                  ></path></svg
-                ><svg viewBox="0 0 877.7142857142857 1024" class="home-icon06">
-                  <path
-                    d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z"
-                  ></path></svg
-                ><svg viewBox="0 0 602.2582857142856 1024" class="home-icon08">
-                  <path
-                    d="M548 6.857v150.857h-89.714c-70.286 0-83.429 33.714-83.429 82.286v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571c0-144.571 88.571-223.429 217.714-223.429 61.714 0 114.857 4.571 130.286 6.857z"
-                  ></path>
-                </svg>
-              </div>
-            </div>
-          </header>
-        </div>
-        <div class="home-hero">
-          <div home="HOME" class="home-hero1">
-            <div class="home-container01">
-              <h1 class="home-hero-heading heading1">Uncapped power</h1>
-              <span class="home-hero-sub-heading">
-                dread.cloud - Your Ultimate Gaming Servers and Bare Metal VPS
-                Solution
-              </span>
-              <div class="home-btn-group">
-                <button class="home-hero-button1 button">Get Started</button>
-                <button class="home-hero-button2 button">
-                  Learn More&nbsp;→
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="home-details">
-          <div class="home-details1">
-            <div class="home-container02">
-              <span class="home-text002 sectionTitle">
-                <span>Details</span>
-                <br />
-              </span>
-              <h2 class="home-details-heading heading2">
-                <span class="home-text005">Why choose dread.cloud?</span>
-                <br />
-              </h2>
-              <span class="home-details-sub-heading">
-                <span>We do more than the competition for less.</span>
-                <br />
-                <br />
-                <span>
-                  Power users will love our high-performance, dedicated CPU
-                  virtual private servers. Perfect for those who want full
-                  control over their server without compromising on hardware.
-                  Take advantage of our latest AMD Ryzen 9 CPUs with 1+ Tbps
-                  DDoS Protection and elevate your VPS experience today.
-                </span>
-                <br />
-              </span>
-            </div>
-            <img
-              alt="image"
-              src="public/external/ryzen9-300h.png"
-              class="home-image"
-            />
-          </div>
-        </div>
-        <div class="home-features">
-          <div class="home-features-container">
-            <div class="home-features1">
-              <div class="home-container03">
-                <span class="home-text012 sectionTitle">
-                  <span>features</span>
-                  <br />
-                </span>
-                <h2 class="home-features-heading heading2">Key Features</h2>
-                <span class="home-features-sub-heading">
-                  Discover the powerful features of dread.cloud
-                </span>
-              </div>
-              <div class="home-container04">
-                <div
-                  class="feature-card-feature-card feature-card-root-class-name"
-                >
-                  <svg viewBox="0 0 1024 1024" class="feature-card-icon">
-                    <path
-                      d="M809.003 291.328l-297.003 171.819-297.003-171.819 275.456-157.397c4.779-2.731 9.899-4.48 15.147-5.333 9.301-1.451 18.987 0.128 27.904 5.291zM491.776 979.669c6.016 3.243 12.928 5.077 20.224 5.077 7.381 0 14.336-1.877 20.395-5.163 15.189-2.475 29.909-7.68 43.392-15.36l298.709-170.709c26.368-15.232 45.269-38.315 55.424-64.597 5.675-14.592 8.619-30.165 8.747-46.251v-341.333c0-20.395-4.821-39.723-13.397-56.917-0.939-3.029-2.219-5.973-3.883-8.832-1.963-3.371-4.267-6.357-6.912-8.96-1.323-1.835-2.731-3.669-4.139-5.419-9.813-12.203-21.845-22.528-35.456-30.507l-299.051-170.88c-26.027-15.019-55.467-19.84-83.328-15.531-15.531 2.432-30.507 7.637-44.288 15.488l-298.709 170.709c-16.341 9.429-29.824 21.888-40.149 36.267-2.56 2.56-4.864 5.547-6.784 8.832-1.664 2.901-2.987 5.888-3.925 8.96-1.707 3.456-3.243 6.955-4.608 10.496-5.632 14.635-8.576 30.208-8.704 45.995v341.632c0.043 30.293 10.581 58.197 28.331 80.128 9.813 12.203 21.845 22.528 35.456 30.507l299.051 170.88c13.824 7.979 28.587 13.099 43.605 15.445zM469.333 537.045v340.949l-277.12-158.336c-4.736-2.773-8.832-6.315-12.16-10.411-5.931-7.381-9.387-16.512-9.387-26.581v-318.379zM554.667 877.995v-340.949l298.667-172.757v318.379c-0.043 5.163-1.067 10.496-2.987 15.445-3.413 8.789-9.6 16.384-18.176 21.333z"
-                    ></path>
-                  </svg>
-                  <div class="feature-card-container">
-                    <h3 class="feature-card-text heading3">
-                      <span>Dedicated KVM Resources</span>
-                    </h3>
-                    <span class="feature-card-text1">
-                      <span>
-                        Utilizing KVM Virtualization, you can ensure that you
-                        have full access to your resources 24/7. Unlike other
-                        providers, we don't have a fair-usage policy regarding
-                        CPU use since we dedicate resources to each customer
-                        with zero overselling.
-                      </span>
-                    </span>
-                  </div>
-                </div>
-                <div class="feature-card-feature-card">
-                  <svg viewBox="0 0 1024 1024" class="feature-card-icon">
-                    <path
-                      d="M809.003 291.328l-297.003 171.819-297.003-171.819 275.456-157.397c4.779-2.731 9.899-4.48 15.147-5.333 9.301-1.451 18.987 0.128 27.904 5.291zM491.776 979.669c6.016 3.243 12.928 5.077 20.224 5.077 7.381 0 14.336-1.877 20.395-5.163 15.189-2.475 29.909-7.68 43.392-15.36l298.709-170.709c26.368-15.232 45.269-38.315 55.424-64.597 5.675-14.592 8.619-30.165 8.747-46.251v-341.333c0-20.395-4.821-39.723-13.397-56.917-0.939-3.029-2.219-5.973-3.883-8.832-1.963-3.371-4.267-6.357-6.912-8.96-1.323-1.835-2.731-3.669-4.139-5.419-9.813-12.203-21.845-22.528-35.456-30.507l-299.051-170.88c-26.027-15.019-55.467-19.84-83.328-15.531-15.531 2.432-30.507 7.637-44.288 15.488l-298.709 170.709c-16.341 9.429-29.824 21.888-40.149 36.267-2.56 2.56-4.864 5.547-6.784 8.832-1.664 2.901-2.987 5.888-3.925 8.96-1.707 3.456-3.243 6.955-4.608 10.496-5.632 14.635-8.576 30.208-8.704 45.995v341.632c0.043 30.293 10.581 58.197 28.331 80.128 9.813 12.203 21.845 22.528 35.456 30.507l299.051 170.88c13.824 7.979 28.587 13.099 43.605 15.445zM469.333 537.045v340.949l-277.12-158.336c-4.736-2.773-8.832-6.315-12.16-10.411-5.931-7.381-9.387-16.512-9.387-26.581v-318.379zM554.667 877.995v-340.949l298.667-172.757v318.379c-0.043 5.163-1.067 10.496-2.987 15.445-3.413 8.789-9.6 16.384-18.176 21.333z"
-                    ></path>
-                  </svg>
-                  <div class="feature-card-container">
-                    <h3 class="feature-card-text heading3">
-                      <span>Multiple OS Solutions</span>
-                    </h3>
-                    <span class="feature-card-text1">
-                      <span>
-                        We offer multiple versions of the most popular Linux
-                        distributions - Debian, Ubuntu, Rocky, and AlmaLinux.
-                        Looking to install something else? You can easily open a
-                        ticket and send us a link to the iso you would like to
-                        be added :)
-                      </span>
-                    </span>
-                  </div>
-                </div>
-                <div class="feature-card-feature-card">
-                  <svg viewBox="0 0 1024 1024" class="feature-card-icon">
-                    <path
-                      d="M809.003 291.328l-297.003 171.819-297.003-171.819 275.456-157.397c4.779-2.731 9.899-4.48 15.147-5.333 9.301-1.451 18.987 0.128 27.904 5.291zM491.776 979.669c6.016 3.243 12.928 5.077 20.224 5.077 7.381 0 14.336-1.877 20.395-5.163 15.189-2.475 29.909-7.68 43.392-15.36l298.709-170.709c26.368-15.232 45.269-38.315 55.424-64.597 5.675-14.592 8.619-30.165 8.747-46.251v-341.333c0-20.395-4.821-39.723-13.397-56.917-0.939-3.029-2.219-5.973-3.883-8.832-1.963-3.371-4.267-6.357-6.912-8.96-1.323-1.835-2.731-3.669-4.139-5.419-9.813-12.203-21.845-22.528-35.456-30.507l-299.051-170.88c-26.027-15.019-55.467-19.84-83.328-15.531-15.531 2.432-30.507 7.637-44.288 15.488l-298.709 170.709c-16.341 9.429-29.824 21.888-40.149 36.267-2.56 2.56-4.864 5.547-6.784 8.832-1.664 2.901-2.987 5.888-3.925 8.96-1.707 3.456-3.243 6.955-4.608 10.496-5.632 14.635-8.576 30.208-8.704 45.995v341.632c0.043 30.293 10.581 58.197 28.331 80.128 9.813 12.203 21.845 22.528 35.456 30.507l299.051 170.88c13.824 7.979 28.587 13.099 43.605 15.445zM469.333 537.045v340.949l-277.12-158.336c-4.736-2.773-8.832-6.315-12.16-10.411-5.931-7.381-9.387-16.512-9.387-26.581v-318.379zM554.667 877.995v-340.949l298.667-172.757v318.379c-0.043 5.163-1.067 10.496-2.987 15.445-3.413 8.789-9.6 16.384-18.176 21.333z"
-                    ></path>
-                  </svg>
-                  <div class="feature-card-container">
-                    <h3 class="feature-card-text heading3">
-                      <span>Fastest CPUs on Market</span>
-                    </h3>
-                    <span class="feature-card-text1">
-                      <span>
-                        Upgrade your experience with a VPS powered by AMD Ryzen
-                        9 CPUs. You won't find outdated enterprise processors
-                        here - all of our plans offer superior single-core
-                        performance. Perfect for running game servers or other
-                        high-performance workloads.
-                      </span>
-                    </span>
-                  </div>
-                </div>
-                <div class="feature-card-feature-card">
-                  <svg viewBox="0 0 1024 1024" class="feature-card-icon">
-                    <path
-                      d="M809.003 291.328l-297.003 171.819-297.003-171.819 275.456-157.397c4.779-2.731 9.899-4.48 15.147-5.333 9.301-1.451 18.987 0.128 27.904 5.291zM491.776 979.669c6.016 3.243 12.928 5.077 20.224 5.077 7.381 0 14.336-1.877 20.395-5.163 15.189-2.475 29.909-7.68 43.392-15.36l298.709-170.709c26.368-15.232 45.269-38.315 55.424-64.597 5.675-14.592 8.619-30.165 8.747-46.251v-341.333c0-20.395-4.821-39.723-13.397-56.917-0.939-3.029-2.219-5.973-3.883-8.832-1.963-3.371-4.267-6.357-6.912-8.96-1.323-1.835-2.731-3.669-4.139-5.419-9.813-12.203-21.845-22.528-35.456-30.507l-299.051-170.88c-26.027-15.019-55.467-19.84-83.328-15.531-15.531 2.432-30.507 7.637-44.288 15.488l-298.709 170.709c-16.341 9.429-29.824 21.888-40.149 36.267-2.56 2.56-4.864 5.547-6.784 8.832-1.664 2.901-2.987 5.888-3.925 8.96-1.707 3.456-3.243 6.955-4.608 10.496-5.632 14.635-8.576 30.208-8.704 45.995v341.632c0.043 30.293 10.581 58.197 28.331 80.128 9.813 12.203 21.845 22.528 35.456 30.507l299.051 170.88c13.824 7.979 28.587 13.099 43.605 15.445zM469.333 537.045v340.949l-277.12-158.336c-4.736-2.773-8.832-6.315-12.16-10.411-5.931-7.381-9.387-16.512-9.387-26.581v-318.379zM554.667 877.995v-340.949l298.667-172.757v318.379c-0.043 5.163-1.067 10.496-2.987 15.445-3.413 8.789-9.6 16.384-18.176 21.333z"
-                    ></path>
-                  </svg>
-                  <div class="feature-card-container">
-                    <h3 class="feature-card-text heading3">
-                      <span>Unparalleled Bare Metal</span>
-                    </h3>
-                    <span class="feature-card-text1">
-                      <span>
-                        We utilizes high quality datacenters and network blends
-                        to provide you with the quality and redundancy that you
-                        deserve. Our bare metal servers are hosted in Cyxtera's
-                        IAD1 facility with industry-standard redundant power and
-                        cooling. Our bare metal network is provided by
-                        Datapacket, offering a high capacity blend of
-                        top-quality Tier 1 ISPs.
-                      </span>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="home-pricing">
-          <div class="home-pricing1">
-            <div class="home-container05">
-              <span class="home-text015 sectionTitle">
-                <span>Pricing</span>
-                <br />
-              </span>
-              <h2 class="home-pricing-heading heading2">
-                <span>AMD Ryzen 9 VPS Hosting</span>
-                <br />
-              </h2>
-              <span class="home-pricing-sub-heading">
-                <span>Plans shown are rough estimates, price on request</span>
-                <br />
-              </span>
-            </div>
-            <div class="home-container06">
-              <div class="home-pricing-card">
-                <div class="home-container07">
-                  <span class="home-text022 heading3">
-                    <span>Ryzen 9 5950X</span>
-                    <br />
-                    <span>- 128gb</span>
-                  </span>
-                  <span class="home-free-plan-description">
-                    <span>2-8 Logical Cores (Dedicated)</span>
-                    <br />
-                  </span>
-                </div>
-                <div class="home-container08">
-                  <div class="home-container09">
-                    <span class="home-text028">
-                      <span>$</span>
-                      <span></span>
-                    </span>
-                    <span class="home-basic-plan-pricing">199</span>
-                    <span class="home-text031">/ month</span>
-                  </div>
-                </div>
-                <div class="home-container10">
-                  <div class="home-container11">
-                    <span class="home-text032">✔</span>
-                    <span class="home-free-plan-features">
-                      Unlimited bandwidth
-                    </span>
-                  </div>
-                  <div class="home-container12">
-                    <span class="home-text033">✔</span>
-                    <span class="home-free-plan-features1">
-                      Unlimited MySQL Databases
-                    </span>
-                  </div>
-                  <div class="home-container13">
-                    <span class="home-text034">✔</span>
-                    <span class="home-free-plan-features2">
-                      1x 2TB NVMe SSDs (Gen 4)
-                    </span>
-                  </div>
-                  <div class="home-container14">
-                    <span class="home-text035">✔</span>
-                    <span class="home-free-plan-features3">
-                      <span>1Gbps Uplink</span>
-                      <br class="home-text037" />
-                      <br />
-                    </span>
-                  </div>
-                </div>
-                <button class="home-button button">
-                  <span>
-                    <span>SOLD OUT</span>
-                    <br />
-                  </span>
-                </button>
-              </div>
-              <div class="home-pricing-card1">
-                <div class="home-container15">
-                  <span class="home-text042 heading3">
-                    Ryzen 9 7950X - 128GB
-                  </span>
-                  <span class="home-basic-plan-description">
-                    <span>8-16 Logical Cores (Dedicated)</span>
-                    <br class="home-text044" />
-                    <br />
-                  </span>
-                </div>
-                <div class="home-container16">
-                  <span class="home-text046">
-                    <span>$</span>
-                    <span></span>
-                  </span>
-                  <span class="home-basic-plan-pricing1">249</span>
-                  <span class="home-text049">/ month</span>
-                </div>
-                <div class="home-container17">
-                  <div class="home-container18">
-                    <span class="home-text050">✔</span>
-                    <span class="home-text051">Unlimited bandwith</span>
-                  </div>
-                  <div class="home-container19">
-                    <span class="home-text052">✔</span>
-                    <span class="home-basic-plan-features">
-                      MySQL Databases
-                    </span>
-                  </div>
-                  <div class="home-container20">
-                    <span class="home-text053">✔</span>
-                    <span class="home-basic-plan-features1">
-                      Server Splitting
-                    </span>
-                  </div>
-                  <div class="home-container21">
-                    <span class="home-text054">✔</span>
-                    <span class="home-basic-plan-features2">
-                      2 x 4TB NVMe SSDs (Gen 4)
-                    </span>
-                  </div>
-                  <div class="home-container22">
-                    <span class="home-text055">✔</span>
-                    <span class="home-basic-plan-features3">
-                      <span>1Gbps Uplink</span>
-                      <br />
-                    </span>
-                  </div>
-                </div>
-                <button class="home-button1 button">
-                  <a
-                    href="mailto:order@dread.cloud?subject="
-                    class="home-link1"
-                  >
-                    <span>Ordered on Request</span>
-                    <br />
-                  </a>
-                </button>
-              </div>
-              <div class="home-pricing-card2">
-                <div class="home-container23">
-                  <span class="home-text060 heading3">
-                    <span>Ryzen 9 7950X - 192GB</span>
-                    <br />
-                  </span>
-                  <span class="home-pro-plan-description">
-                    <span>8 Core/16 Thread</span>
-                    <br />
-                  </span>
-                </div>
-                <div class="home-container24">
-                  <span class="home-text065">
-                    <span>$</span>
-                    <span></span>
-                  </span>
-                  <span class="home-pro-plan-pricing">
-                    <span>299</span>
-                    <br />
-                  </span>
-                  <span class="home-text070">/ month</span>
-                </div>
-                <div class="home-container25">
-                  <div class="home-container26">
-                    <span class="home-text071">✔</span>
-                    <span class="home-pro-plan-features">
-                      Unlimited bandwidth
-                    </span>
-                  </div>
-                  <div class="home-container27">
-                    <span class="home-text072">✔</span>
-                    <span class="home-pro-plan-features01">
-                      MySQL Databases
-                    </span>
-                  </div>
-                  <div class="home-container28">
-                    <span class="home-text073">✔</span>
-                    <span class="home-pro-plan-features02">
-                      2 x 4TB NVMe SSDs (Gen 4)
-                    </span>
-                  </div>
-                  <div class="home-container29">
-                    <span class="home-text074">✔</span>
-                    <span class="home-pro-plan-features03">
-                      CPU bursting (proprietary)
-                    </span>
-                  </div>
-                  <div class="home-container30">
-                    <span class="home-text075">✔</span>
-                    <span class="home-pro-plan-features04">
-                      Advanced Off-site Backups
-                    </span>
-                  </div>
-                </div>
-                <button class="home-button2 button">Ordered on Request</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="home-banner">
-          <div class="home-banner1">
-            <h1 class="home-banner-heading heading2">
-              AMD Ryzen Bare Metal Dedicated Hosting
-            </h1>
-            <span class="home-banner-sub-heading">
-              Need more power than our VPS hosting options can offer?
-            </span>
-            <button class="home-banner-button button">Learn More</button>
-            <div class="home-pricing2">
-              <div class="home-container31">
-                <div class="home-pricing-card3">
-                  <div class="home-container32">
-                    <span class="home-text076 heading3">
-                      <span>AMD Ryzen 9</span>
-                      <br />
-                      <span>7950X&nbsp;</span>
-                      <br />
-                    </span>
-                    <span class="home-pro-plan-description1">
-                      6-core - 32-Thread 4.5GHz
-                    </span>
-                  </div>
-                  <div class="home-container33">
-                    <span class="home-text081">
-                      <span>$</span>
-                      <span></span>
-                    </span>
-                    <span class="home-pro-plan-pricing1">1999</span>
-                    <span class="home-text084">/ month</span>
-                  </div>
-                  <div class="home-container34">
-                    <div class="home-container35">
-                      <span class="home-text085">✔</span>
-                      <span class="home-text086">
-                        <span>1+ Tbps L3/L4 DDoS protection</span>
-                        <br class="home-text088" />
-                      </span>
-                    </div>
-                    <div class="home-container36">
-                      <span class="home-text089">✔</span>
-                      <span class="home-pro-plan-features05">
-                        <span>1Gbps Uplink</span>
-                        <br />
-                      </span>
-                    </div>
-                    <div class="home-container37">
-                      <span class="home-text092">✔</span>
-                      <span class="home-pro-plan-features06">
-                        5x 4TB NVMe SSDs (Gen 4)
-                      </span>
-                    </div>
-                    <div class="home-container38">
-                      <span class="home-text093">✔</span>
-                      <span class="home-pro-plan-features07">
-                        CPU bursting (proprietary)
-                      </span>
-                    </div>
-                  </div>
-                  <button class="home-button3 button">
-                    <span>
-                      <span class="home-text095">Request a Quote</span>
-                      <br />
-                    </span>
-                  </button>
-                </div>
-                <div class="home-pricing-card4">
-                  <div class="home-container39">
-                    <span class="home-text097 heading3">
-                      <span>AMD Ryzen Threadripper PRO 7995WX</span>
-                      <br />
-                    </span>
-                    <span class="home-pro-plan-description2">
-                      96-core -&nbsp;192-Thread 5.1GHz
-                    </span>
-                  </div>
-                  <div class="home-container40">
-                    <span class="home-text100">
-                      <span>$</span>
-                      <span></span>
-                    </span>
-                    <span class="home-pro-plan-pricing2">3999</span>
-                    <span class="home-text103">/ month</span>
-                  </div>
-                  <div class="home-container41">
-                    <div class="home-container42">
-                      <span class="home-text104">✔</span>
-                      <span class="home-text105">
-                        <span>5+ Tbps L3/L4 DDoS protection</span>
-                        <br />
-                      </span>
-                    </div>
-                    <div class="home-container43">
-                      <span class="home-text108">✔</span>
-                      <span class="home-pro-plan-features08">5Gbps Uplink</span>
-                    </div>
-                    <div class="home-container44">
-                      <span class="home-text109">✔</span>
-                      <span class="home-pro-plan-features09">
-                        10x 4TB NVMe SSDs (Gen 4)
-                      </span>
-                    </div>
-                    <div class="home-container45">
-                      <span class="home-text110">✔</span>
-                      <span class="home-pro-plan-features10">
-                        CPU bursting (proprietary)
-                      </span>
-                    </div>
-                  </div>
-                  <button class="home-button4 button">Request a Quote</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="home-faq">
-          <div class="home-faq-container">
-            <div class="home-faq1">
-              <div class="home-container46">
-                <span class="home-text111 sectionTitle">
-                  <span>FAQ</span>
-                  <br />
-                </span>
-                <h2 class="home-text114 heading2">Common questions</h2>
-                <span class="home-text115">
-                  <span>
-                    Here are some of the most common questions that we get.
-                  </span>
-                  <br />
-                  <span>
-                    <span>
-                      <span></span>
-                      <span></span>
-                    </span>
-                    <span>
-                      <span></span>
-                      <span></span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <span></span>
-                      <span></span>
-                    </span>
-                    <span>
-                      <span></span>
-                      <span></span>
-                    </span>
-                  </span>
-                </span>
-              </div>
-              <div class="home-container47">
-                <div class="question-container">
-                  <span class="question-text heading4">
-                    <span>What is dread.cloud?</span>
-                  </span>
-                  <span class="question-text1">
-                    <span>
-                      Dread.cloud is a whitelist only, recommendation only,
-                      enterprise grade VPS / bare metal server solution for game
-                      server networks, and sysadmins looking for a better
-                      solution to game servers.
-                    </span>
-                  </span>
-                </div>
-                <div class="question-container">
-                  <span class="question-text heading4">
-                    <span>How does dread.cloud work?</span>
-                  </span>
-                  <span class="question-text1">
-                    <span>
-                      Most of our customers are a per-recommendation basis.
-                      We're using proprietary software alongside our most
-                      powerful panel, so we are a whitelist only company
-                      unfortunately. We don't currently offer to individual
-                      consumers, we thoroughly vet any network or clients that
-                      we offer our services to.
-                    </span>
-                  </span>
-                </div>
-                <div class="question-container">
-                  <span class="question-text heading4">
-                    <span>
-                      What happens if I'm hit offline or subject to a DDoS
-                      attack?
-                    </span>
-                  </span>
-                  <span class="question-text1">
-                    <span>
-                      Our bare metal network utilizes a custom DDoS mitigation
-                      system based on XDP and eBPF filtering. This provides for
-                      1+ Tbps of L3/L4 protection as well as L7 filtering for
-                      games such as Minecraft (Java and Bedrock), Rust, CS:GO,
-                      and more!
-                    </span>
-                  </span>
-                </div>
-                <div class="question-container">
-                  <span class="question-text heading4">
-                    <span>
-                      Are the servers provided by dread.cloud reliable?
-                    </span>
-                  </span>
-                  <span class="question-text1">
-                    <span>
-                      We stand by the quality of our product with a 99.99%
-                      monthly uptime SLA. Any downtime exceeding 0.01% will be
-                      compensated according to the SLA conditions that can be
-                      found in our Terms of Service. Our SLA covers network and
-                      power uptime outside of any scheduled and communicated
-                      maintenance.
-                    </span>
-                  </span>
-                </div>
-                <div class="question-container">
-                  <span class="question-text heading4">
-                    <span>How can I purchase a server from dread.cloud?</span>
-                  </span>
-                  <span class="question-text1">
-                    <span>
-                      To purchase a VPS / Baremetal from dread.cloud, simply
-                      email us or contact us through a Ticket, or shoot us a
-                      message on Discord.
-                    </span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="home-footer">
-          <footer class="home-footer1">
-            <div class="home-container48">
-              <span class="home-logo2">DREAD.cloud</span>
-              <nav class="home-nav1">
-                <a href="index.html" class="home-nav12">Home</a>
-                <span class="home-nav22">Features</span>
-                <span class="home-nav32">Pricing</span>
-                <span class="home-nav42">FAQ</span>
-                <a
-                  href="https://discord.com/users/976753017858711552"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  class="home-nav51"
-                >
-                  Contact
-                </a>
-              </nav>
-            </div>
-            <div class="home-separator"></div>
-            <div class="home-container49">
-              <svg viewBox="0 0 1024 1024" class="home-icon10">
-                <path
-                  d="M585.143 258.286l180.571 180.571-326.857 326.857-180.571-180.571zM464.571 817.714l353.143-353.143c14.286-14.286 14.286-37.143 0-51.429l-206.857-206.857c-13.714-13.714-37.714-13.714-51.429 0l-353.143 353.143c-14.286 14.286-14.286 37.143 0 51.429l206.857 206.857c6.857 6.857 16 10.286 25.714 10.286s18.857-3.429 25.714-10.286zM972.571 453.714l-518.286 518.857c-28.571 28-75.429 28-103.429 0l-72-72c42.857-42.857 42.857-112.571 0-155.429s-112.571-42.857-155.429 0l-71.429-72c-28.571-28-28.571-74.857 0-103.429l518.286-517.714c28-28.571 74.857-28.571 103.429 0l71.429 71.429c-42.857 42.857-42.857 112.571 0 155.429s112.571 42.857 155.429 0l72 71.429c28 28.571 28 75.429 0 103.429z"
-                ></path>
-              </svg>
-              <a
-                href="https://www.instagram.com/dread.cloud/"
-                target="_blank"
-                rel="noreferrer noopener"
-                class="home-link2"
-              >
-                <svg viewBox="0 0 1024 1024" class="home-icon12">
-                  <path
-                    d="M512 92.2c136.8 0 153 0.6 206.8 3 50 2.2 77 10.6 95 17.6 23.8 9.2 41 20.4 58.8 38.2 18 18 29 35 38.4 58.8 7 18 15.4 45.2 17.6 95 2.4 54 3 70.2 3 206.8s-0.6 153-3 206.8c-2.2 50-10.6 77-17.6 95-9.2 23.8-20.4 41-38.2 58.8-18 18-35 29-58.8 38.4-18 7-45.2 15.4-95 17.6-54 2.4-70.2 3-206.8 3s-153-0.6-206.8-3c-50-2.2-77-10.6-95-17.6-23.8-9.2-41-20.4-58.8-38.2-18-18-29-35-38.4-58.8-7-18-15.4-45.2-17.6-95-2.4-54-3-70.2-3-206.8s0.6-153 3-206.8c2.2-50 10.6-77 17.6-95 9.2-23.8 20.4-41 38.2-58.8 18-18 35-29 58.8-38.4 18-7 45.2-15.4 95-17.6 53.8-2.4 70-3 206.8-3zM512 0c-139 0-156.4 0.6-211 3-54.4 2.4-91.8 11.2-124.2 23.8-33.8 13.2-62.4 30.6-90.8 59.2-28.6 28.4-46 57-59.2 90.6-12.6 32.6-21.4 69.8-23.8 124.2-2.4 54.8-3 72.2-3 211.2s0.6 156.4 3 211c2.4 54.4 11.2 91.8 23.8 124.2 13.2 33.8 30.6 62.4 59.2 90.8 28.4 28.4 57 46 90.6 59 32.6 12.6 69.8 21.4 124.2 23.8 54.6 2.4 72 3 211 3s156.4-0.6 211-3c54.4-2.4 91.8-11.2 124.2-23.8 33.6-13 62.2-30.6 90.6-59s46-57 59-90.6c12.6-32.6 21.4-69.8 23.8-124.2 2.4-54.6 3-72 3-211s-0.6-156.4-3-211c-2.4-54.4-11.2-91.8-23.8-124.2-12.6-34-30-62.6-58.6-91-28.4-28.4-57-46-90.6-59-32.6-12.6-69.8-21.4-124.2-23.8-54.8-2.6-72.2-3.2-211.2-3.2v0z"
-                  ></path>
-                  <path
-                    d="M512 249c-145.2 0-263 117.8-263 263s117.8 263 263 263 263-117.8 263-263c0-145.2-117.8-263-263-263zM512 682.6c-94.2 0-170.6-76.4-170.6-170.6s76.4-170.6 170.6-170.6c94.2 0 170.6 76.4 170.6 170.6s-76.4 170.6-170.6 170.6z"
-                  ></path>
-                  <path
-                    d="M846.8 238.6c0 33.91-27.49 61.4-61.4 61.4s-61.4-27.49-61.4-61.4c0-33.91 27.49-61.4 61.4-61.4s61.4 27.49 61.4 61.4z"
-                  ></path>
-                </svg>
-              </a>
-            </div>
-          </footer>
-        </div>
+  /* ============ TYPE ============ */
+  .mono{font-family:var(--mono);font-weight:500;letter-spacing:.02em}
+  .eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.34em;text-transform:uppercase;color:var(--dim)}
+  h1,h2,h3{font-weight:700;letter-spacing:-.02em;line-height:.96}
+
+  /* ============ NAV ============ */
+  header.nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);
+    background:color-mix(in srgb,var(--bg) 72%,transparent);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:.02em;display:flex;align-items:center;gap:10px}
+  .brand .logo-mark{width:23px;height:23px;background:var(--mark) center/contain no-repeat;flex-shrink:0}
+  html[data-contrast="light"] .brand .logo-mark{filter:invert(1)}
+  @keyframes blink{0%,70%{opacity:1}71%,100%{opacity:.25}}
+  nav.links{display:flex;gap:26px;align-items:center}
+  nav.links a{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;color:var(--dim);transition:color .2s}
+  nav.links a:hover{color:var(--fg)}
+  .contrast-btn{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--dim);
+    border:1px solid var(--line);padding:6px 10px;cursor:pointer;background:transparent;transition:.2s}
+  .contrast-btn:hover{color:var(--fg);border-color:var(--line-strong)}
+  @media(max-width:720px){nav.links a:not(.nav-keep){display:none}}
+
+  /* ============ HERO ============ */
+  .hero{padding:clamp(64px,12vh,150px) 0 clamp(48px,7vh,90px)}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:30px}
+  .hero-meta span{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+  .hero h1{font-size:clamp(52px,13vw,180px);text-transform:uppercase;letter-spacing:-.045em}
+  .hero h1 .ln{display:block;overflow:hidden}
+  .hero h1 .ln > span{display:block;transform:translateY(110%);animation:rise .9s cubic-bezier(.16,1,.3,1) forwards}
+  .hero h1 .ln:nth-child(2) > span{animation-delay:.12s}
+  @keyframes rise{to{transform:translateY(0)}}
+  .hero h1 em{font-style:normal;-webkit-text-stroke:1.5px var(--fg);color:transparent}
+  .hero-sub{margin-top:30px;display:flex;flex-wrap:wrap;gap:30px;align-items:flex-end;justify-content:space-between}
+  .hero-sub p{max-width:46ch;font-size:clamp(15px,1.7vw,19px);color:var(--dim);line-height:1.5}
+  .cta-row{display:flex;gap:14px;flex-shrink:0}
+  .btn{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;
+    padding:14px 22px;border:1px solid var(--fg);cursor:pointer;transition:.22s;white-space:nowrap;background:transparent;color:var(--fg)}
+  .btn:hover{background:var(--fg);color:var(--bg)}
+  .btn.solid{background:var(--fg);color:var(--bg)}
+  .btn.solid:hover{background:transparent;color:var(--fg)}
+
+  /* marquee */
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:13px 0;margin-top:clamp(40px,7vh,80px)}
+  .marquee .track{display:inline-block;animation:scroll 26s linear infinite}
+  .marquee span{font-family:var(--mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);padding:0 26px}
+  .marquee span b{color:var(--fg);font-weight:500}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ============ SECTION SHELL ============ */
+  section{position:relative;padding:clamp(64px,11vh,128px) 0}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:46px;border-bottom:1px solid var(--line);padding-bottom:18px}
+  .sec-head .idx{font-family:var(--mono);font-size:12px;color:var(--faint);letter-spacing:.1em}
+  .sec-head h2{font-size:clamp(26px,4vw,46px);text-transform:uppercase;flex:1}
+  .sec-head .note{font-family:var(--mono);font-size:11.5px;color:var(--dim);letter-spacing:.05em;text-align:right;max-width:24ch}
+
+  /* reveal — only hidden when JS confirmed; always fails open to visible */
+  .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1)}
+  .js .reveal.in{opacity:1;transform:none}
+
+  /* ============ WHAT WE DO ============ */
+  .lede{font-size:clamp(22px,3.4vw,40px);font-weight:500;letter-spacing:-.02em;line-height:1.18;max-width:20ch}
+  .lede b{font-weight:700}
+  .what-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(30px,5vw,72px);align-items:start}
+  .props{display:grid;gap:0;border-top:1px solid var(--line)}
+  .prop{display:grid;grid-template-columns:38px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+  .prop .n{font-family:var(--mono);font-size:12px;color:var(--faint)}
+  .prop h3{font-size:17px;font-weight:600;letter-spacing:-.01em;margin-bottom:5px}
+  .prop p{font-size:14px;color:var(--dim);line-height:1.5}
+  @media(max-width:780px){.what-grid{grid-template-columns:1fr;gap:36px}}
+  .chip-shot{margin-top:40px;width:100%;max-width:430px;aspect-ratio:526/300;
+    background:var(--chip) left center/contain no-repeat;animation:float 7s ease-in-out infinite}
+  html[data-contrast="light"] .chip-shot{filter:drop-shadow(0 8px 24px rgba(0,0,0,.18))}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+
+  /* ============ AVAILABILITY BOARD ============ */
+  .board-key{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:26px;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--dim)}
+  .board-key .k{display:flex;align-items:center;gap:8px}
+  .swatch{width:30px;height:14px;border:1px solid var(--line-strong);flex-shrink:0}
+  .swatch.free{background:var(--fg)}
+  .swatch.req{border-style:dashed}
+  .swatch.sold{background-image:repeating-linear-gradient(45deg,transparent 0 4px,var(--line-strong) 4px 5px)}
+
+  .nodes{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:820px){.nodes{grid-template-columns:1fr}}
+  .node{position:relative;border:1px solid var(--line);background:var(--panel);
+    padding:22px 22px 20px;display:flex;flex-direction:column;gap:16px;transition:border-color .25s,transform .25s}
+  .node:hover{border-color:var(--line-strong);transform:translateY(-2px)}
+  .node .top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+  .node .id{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--faint)}
+  .node h3{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-top:7px}
+  .node .loc{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--dim);margin-top:6px}
+
+  .tag{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    padding:6px 10px;border:1px solid var(--fg);white-space:nowrap;display:inline-flex;align-items:center;gap:7px}
+  .tag.free{background:var(--fg);color:var(--bg)}
+  .tag.free .pip{width:6px;height:6px;border-radius:50%;background:var(--bg);animation:blink 1.6s steps(1) infinite}
+  .tag.req{background:transparent;color:var(--fg);border-style:dashed}
+  .tag.sold{background:transparent;color:var(--dim);border-color:var(--line-strong)}
+
+  .specs{display:grid;grid-template-columns:1fr 1fr;gap:9px 18px;border-top:1px solid var(--line);padding-top:15px}
+  .specs .s{display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-size:12px}
+  .specs .s .lab{color:var(--faint);letter-spacing:.03em}
+  .specs .s .val{color:var(--fg);text-align:right}
+  .node .foot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:2px}
+  .price{font-family:var(--mono);font-size:13px;color:var(--dim)}
+  .price b{font-family:var(--display);font-size:30px;font-weight:700;color:var(--fg);letter-spacing:-.02em}
+  .node .act{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg);border-bottom:1px solid var(--fg);padding-bottom:2px;transition:.2s}
+  .node .act:hover{color:var(--dim);border-color:var(--dim)}
+  /* sold-out treatment — readable in pure mono */
+  .node.sold::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:repeating-linear-gradient(45deg,transparent 0 9px,var(--line) 9px 10px);opacity:.6}
+  .node.sold h3,.node.sold .specs,.node.sold .price{opacity:.5}
+  .node.sold .act{color:var(--dim);border-color:var(--dim);cursor:not-allowed}
+
+  /* ============ PRICING STRIP ============ */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line)}
+  @media(max-width:780px){.tiers{grid-template-columns:1fr}}
+  .tier{padding:30px 26px;border-right:1px solid var(--line)}
+  .tier:last-child{border-right:0}
+  @media(max-width:780px){.tier{border-right:0;border-bottom:1px solid var(--line)}.tier:last-child{border-bottom:0}}
+  .tier .name{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+  .tier .from{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:18px}
+  .tier .amt{font-size:clamp(40px,5vw,58px);font-weight:700;letter-spacing:-.03em;margin-top:4px;line-height:1}
+  .tier .amt small{font-family:var(--mono);font-size:13px;font-weight:400;color:var(--dim);letter-spacing:0}
+  .tier ul{list-style:none;margin-top:22px;display:grid;gap:9px}
+  .tier li{font-family:var(--mono);font-size:12.5px;color:var(--dim);display:flex;gap:10px}
+  .tier li::before{content:"+";color:var(--fg)}
+
+  /* ============ CONTACT ============ */
+  .contact{text-align:center;padding-top:clamp(70px,10vh,120px);position:relative;overflow:hidden}
+  .contact .wm{position:absolute;top:50%;left:50%;width:min(72vw,620px);aspect-ratio:1;
+    transform:translate(-50%,-50%);background:var(--mark) center/contain no-repeat;
+    opacity:.05;animation:spin 70s linear infinite;pointer-events:none;z-index:0}
+  html[data-contrast="light"] .contact .wm{filter:invert(1)}
+  @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+  .contact .wrap{position:relative;z-index:1}
+  .contact h2{font-size:clamp(48px,13vw,180px);text-transform:uppercase;letter-spacing:-.04em;line-height:.9}
+  .contact h2 a{display:inline-block;transition:transform .3s}
+  .contact h2 a:hover{transform:scale(.98)}
+  .contact .sub{font-family:var(--mono);font-size:13px;letter-spacing:.1em;color:var(--dim);margin-top:26px;text-transform:uppercase}
+  .contact .chan{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+
+  /* ============ FOOTER ============ */
+  footer.foot{border-top:1px solid var(--line);margin-top:clamp(70px,10vh,120px);padding:30px 0}
+  .foot-in{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center}
+  .foot-in span{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--faint)}
+  .foot-brand{display:flex;align-items:center;gap:10px}
+  .foot-mark{width:19px;height:19px;background:var(--mark) center/contain no-repeat;flex-shrink:0}
+  html[data-contrast="light"] .foot-mark{filter:invert(1)}
+  .foot-in .lks{display:flex;gap:22px}
+  .foot-in .lks a{color:var(--dim);transition:.2s}
+  .foot-in .lks a:hover{color:var(--fg)}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .hero h1 .ln > span{transform:none}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<canvas id="rain"></canvas>
+<div class="grain"></div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand"><span class="logo-mark"></span>dread.cloud</a>
+    <nav class="links">
+      <a href="#what">what</a>
+      <a href="#machines">machines</a>
+      <a href="#pricing">pricing</a>
+      <a href="#contact" class="nav-keep">contact</a>
+      <button class="contrast-btn" id="contrast" aria-label="Toggle contrast">INVERT</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-meta">
+      <span>● Systems nominal</span>
+      <span>NA · EU · SG</span>
+      <span>Whitelist only</span>
+      <span id="utc">UTC --:--</span>
+    </div>
+    <h1>
+      <span class="ln"><span>Uncapped</span></span>
+      <span class="ln"><span><em>power</em></span></span>
+    </h1>
+    <div class="hero-sub">
+      <p>High-performance <b style="color:var(--fg)">bare metal &amp; VPS</b> for game-server networks and sysadmins who outgrew the usual hosts. Dedicated resources, zero overselling, 1+ Tbps DDoS mitigation.</p>
+      <div class="cta-row">
+        <a href="#machines" class="btn solid">See availability ↓</a>
+        <a href="#contact" class="btn">Contact</a>
       </div>
     </div>
-    <script
-      data-section-id="navbar"
-      src="https://unpkg.com/@teleporthq/teleport-custom-scripts"
-    ></script>
-  </body>
+  </div>
+  <div class="marquee" aria-hidden="true">
+    <div class="track" id="mq">
+      <span><b>AMD Ryzen 9</b></span><span>1+ Tbps DDoS</span><span><b>KVM dedicated</b></span><span>NA · EU · SG</span><span><b>99.99% SLA</b></span><span>NVMe Gen4</span><span><b>no overselling</b></span><span>XDP / eBPF</span>
+      <span><b>AMD Ryzen 9</b></span><span>1+ Tbps DDoS</span><span><b>KVM dedicated</b></span><span>NA · EU · SG</span><span><b>99.99% SLA</b></span><span>NVMe Gen4</span><span><b>no overselling</b></span><span>XDP / eBPF</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT -->
+<section id="what">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="idx">01</span><h2>What we do</h2>
+      <span class="note">whitelist · recommendation only</span>
+    </div>
+    <div class="what-grid">
+      <div>
+        <p class="lede reveal">We rent <b>enterprise-grade</b> bare metal and VPS to networks that need <b>real</b> hardware — not oversold shared boxes.</p>
+        <div class="chip-shot reveal" role="img" aria-label="AMD Ryzen processor"></div>
+      </div>
+      <div class="props reveal">
+        <div class="prop"><span class="n">A</span><div><h3>Dedicated KVM, zero overselling</h3><p>Full access to your resources 24/7. No fair-usage throttling — what you rent is yours.</p></div></div>
+        <div class="prop"><span class="n">B</span><div><h3>1+ Tbps DDoS mitigation</h3><p>Custom XDP/eBPF filtering at L3/L4, plus L7 for Minecraft, Rust, CS, and more.</p></div></div>
+        <div class="prop"><span class="n">C</span><div><h3>Fastest Ryzen on market</h3><p>Latest AMD Ryzen 9 — superior single-core for game servers and high-perf workloads.</p></div></div>
+        <div class="prop"><span class="n">D</span><div><h3>NA · EU · SG, 99.99% SLA</h3><p>Tier-1 network blend across three regions with backed uptime and off-site backups.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MACHINES / AVAILABILITY -->
+<section id="machines">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="idx">02</span><h2>Machines</h2>
+      <span class="note">live availability — updated <span id="updated">—</span></span>
+    </div>
+    <div class="board-key reveal">
+      <div class="k"><span class="swatch free"></span> available now</div>
+      <div class="k"><span class="swatch req"></span> on request</div>
+      <div class="k"><span class="swatch sold"></span> sold out</div>
+    </div>
+    <div class="nodes" id="nodes"></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="idx">03</span><h2>Pricing</h2>
+      <span class="note">rough estimates — final price on request</span>
+    </div>
+    <div class="tiers reveal">
+      <div class="tier">
+        <div class="name">VPS</div>
+        <div class="from">from</div>
+        <div class="amt">$199<small>/mo</small></div>
+        <ul><li>Dedicated KVM cores</li><li>NVMe Gen4 storage</li><li>1 Gbps uplink</li><li>1+ Tbps DDoS</li></ul>
+      </div>
+      <div class="tier">
+        <div class="name">Bare metal</div>
+        <div class="from">from</div>
+        <div class="amt">$1999<small>/mo</small></div>
+        <ul><li>Full dedicated Ryzen 9</li><li>5× NVMe Gen4</li><li>CPU bursting</li><li>1+ Tbps DDoS</li></ul>
+      </div>
+      <div class="tier">
+        <div class="name">Enterprise</div>
+        <div class="from">from</div>
+        <div class="amt">$3999<small>/mo</small></div>
+        <ul><li>Threadripper PRO</li><li>10× NVMe Gen4</li><li>5 Gbps uplink</li><li>5+ Tbps DDoS</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wm" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="eyebrow reveal">04 — Get in</span>
+    <h2 class="reveal"><a href="mailto:order@dread.cloud">Let's<br>talk →</a></h2>
+    <p class="sub reveal">whitelist only · we vet every network we onboard</p>
+    <div class="chan reveal">
+      <a href="mailto:order@dread.cloud" class="btn solid">order@dread.cloud</a>
+      <a href="https://discord.com/users/976753017858711552" target="_blank" rel="noreferrer" class="btn">Discord</a>
+      <a href="https://www.instagram.com/dread.cloud/" target="_blank" rel="noreferrer" class="btn">Instagram</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span class="foot-brand"><span class="foot-mark"></span>dread.cloud — bare metal &amp; VPS</span>
+    <div class="lks">
+      <a href="#what">what</a><a href="#machines">machines</a><a href="#pricing">pricing</a><a href="#contact">contact</a>
+    </div>
+    <span>© 2026 · NA · EU · SG</span>
+  </div>
+</footer>
+
+<script>
+/* ===================================================================
+   EDIT YOUR FLEET HERE — flip status / change price in one place.
+   status: "free"  = available now
+           "req"   = on request
+           "sold"  = sold out
+=================================================================== */
+const FLEET = [
+  { id:"r9-5950x · na-01", name:"Ryzen 9 5950X", loc:"North America",
+    specs:{ Cores:"2–8 dedicated", RAM:"128 GB", Storage:"1× 2TB NVMe", Uplink:"1 Gbps" },
+    price:199, status:"sold" },
+  { id:"r9-7950x · eu-04", name:"Ryzen 9 7950X", loc:"Europe",
+    specs:{ Cores:"8–16 dedicated", RAM:"128 GB", Storage:"2× 4TB NVMe", Uplink:"1 Gbps" },
+    price:249, status:"free" },
+  { id:"r9-7950x · sg-02", name:"Ryzen 9 7950X", loc:"Singapore",
+    specs:{ Cores:"8C / 16T", RAM:"192 GB", Storage:"2× 4TB NVMe", Uplink:"1 Gbps" },
+    price:299, status:"free" },
+  { id:"bm-7950x · na-07", name:"Bare Metal 7950X", loc:"North America",
+    specs:{ Cores:"16C / 32T", RAM:"192 GB", Storage:"5× 4TB NVMe", Uplink:"1 Gbps" },
+    price:1999, status:"req" },
+  { id:"tr-7995wx · eu-01", name:"Threadripper PRO 7995WX", loc:"Europe",
+    specs:{ Cores:"96C / 192T", RAM:"512 GB", Storage:"10× 4TB NVMe", Uplink:"5 Gbps" },
+    price:3999, status:"req" },
+  { id:"r9-7950x · na-09", name:"Ryzen 9 7950X", loc:"North America",
+    specs:{ Cores:"8–16 dedicated", RAM:"128 GB", Storage:"2× 4TB NVMe", Uplink:"1 Gbps" },
+    price:249, status:"sold" },
+];
+const LAST_UPDATED = "23 Jun 2026";
+
+/* ---- render nodes ---- */
+const TAG = { free:["free","Available"], req:["req","On request"], sold:["sold","Sold out"] };
+const wrap = document.getElementById("nodes");
+wrap.innerHTML = FLEET.map(n=>{
+  const [cls,label] = TAG[n.status];
+  const specs = Object.entries(n.specs).map(([k,v])=>
+    `<div class="s"><span class="lab">${k}</span><span class="val">${v}</span></div>`).join("");
+  const pip = n.status==="free" ? '<span class="pip"></span>' : '';
+  const act = n.status==="sold" ? '<span class="act">unavailable</span>'
+            : `<a class="act" href="mailto:order@dread.cloud?subject=${encodeURIComponent(n.id)}">enquire →</a>`;
+  return `<article class="node ${n.status==='sold'?'sold':''} reveal">
+    <div class="top">
+      <div><div class="id">${n.id}</div><h3>${n.name}</h3><div class="loc">${n.loc}</div></div>
+      <span class="tag ${cls}">${pip}${label}</span>
+    </div>
+    <div class="specs">${specs}</div>
+    <div class="foot">
+      <div class="price">from <b>$${n.price}</b> /mo</div>${act}
+    </div>
+  </article>`;
+}).join("");
+document.getElementById("updated").textContent = LAST_UPDATED;
+
+/* ---- utc clock ---- */
+function tick(){
+  const d=new Date();
+  const p=x=>String(x).padStart(2,"0");
+  document.getElementById("utc").textContent =
+    `UTC ${p(d.getUTCHours())}:${p(d.getUTCMinutes())}:${p(d.getUTCSeconds())}`;
+}
+tick(); setInterval(tick,1000);
+
+/* ---- contrast toggle ---- */
+const html=document.documentElement;
+document.getElementById("contrast").addEventListener("click",()=>{
+  const on = html.getAttribute("data-contrast")==="light";
+  html.setAttribute("data-contrast", on?"dark":"light");
+  document.getElementById("contrast").textContent = on?"INVERT":"REVERT";
+});
+
+/* ---- scroll reveal (fails open: everything reveals no matter what) ---- */
+const reveals=[...document.querySelectorAll(".reveal")];
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}
+}),{threshold:0, rootMargin:"0px 0px -8% 0px"});
+reveals.forEach(el=>io.observe(el));
+// reveal anything already on screen immediately
+function revealVisible(){
+  const vh=innerHeight;
+  reveals.forEach(el=>{ const r=el.getBoundingClientRect(); if(r.top<vh*0.95) el.classList.add("in"); });
+}
+revealVisible(); addEventListener("scroll",revealVisible,{passive:true});
+// hard failsafe — never leave content hidden
+setTimeout(()=>reveals.forEach(el=>el.classList.add("in")),1800);
+
+/* ---- binary rain canvas ---- */
+(function(){
+  const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  const c=document.getElementById("rain"), x=c.getContext("2d");
+  let cols, drops, fs=14, W, H;
+  function size(){
+    W=c.width=innerWidth; H=c.height=innerHeight;
+    cols=Math.floor(W/fs); drops=Array(cols).fill(0).map(()=>Math.random()*-H/fs);
+  }
+  size(); addEventListener("resize",size);
+  function frame(){
+    const light = html.getAttribute("data-contrast")==="light";
+    x.fillStyle = light ? "rgba(255,255,255,.18)" : "rgba(0,0,0,.18)";
+    x.fillRect(0,0,W,H);
+    x.fillStyle = light ? "#000" : "#fff";
+    x.font = fs+"px JetBrains Mono, monospace";
+    for(let i=0;i<cols;i++){
+      const ch = Math.random()<.5?"0":"1";
+      x.fillText(ch, i*fs, drops[i]*fs);
+      if(drops[i]*fs>H && Math.random()>.975) drops[i]=0;
+      drops[i]++;
+    }
+  }
+  if(reduce){ // single static pass
+    x.fillStyle="#000";x.fillRect(0,0,W,H);
+    x.fillStyle="#fff";x.font=fs+"px monospace";
+    for(let i=0;i<cols;i++)for(let j=0;j<H/fs;j+=1){if(Math.random()<.3)x.fillText(Math.random()<.5?"0":"1",i*fs,j*fs);}
+  } else {
+    let last=0;
+    (function loop(t){ if(t-last>55){frame();last=t;} requestAnimationFrame(loop); })(0);
+  }
+})();
+</script>
+</body>
 </html>
