@@ -171,6 +171,7 @@
   .specs .s{display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-stretch:var(--mono-w);font-size:12px}
   .specs .s .lab{color:var(--faint);letter-spacing:.03em}
   .specs .s .val{color:var(--fg);text-align:right}
+  @media(max-width:520px){.specs{grid-template-columns:1fr}}
   .node .foot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:2px}
   .price{font-family:var(--mono);font-stretch:var(--mono-w);font-size:13px;color:var(--dim)}
   .price b{font-family:var(--display);font-size:30px;font-weight:700;color:var(--fg);letter-spacing:-.02em}
@@ -221,6 +222,19 @@
   .foot-in .lks a{color:var(--dim);transition:.2s;font-size:11.5px;font-stretch:var(--mono-w);letter-spacing:.06em}
   .foot-in .lks a:hover{color:var(--fg)}
 
+
+  /* ============ PROOF STRIP ============ */
+  .proof{padding-top:0}
+  .proof-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .proof-row a{display:block;padding:26px 24px 26px 0;text-decoration:none}
+  .proof-row a+a{padding-left:24px;border-left:1px solid var(--line)}
+  .proof-row b{display:block;font-size:clamp(44px,6vw,84px);font-weight:900;font-stretch:62%;line-height:.88;letter-spacing:-.01em}
+  .proof-row span{display:block;margin-top:10px;font-size:14px;color:var(--dim)}
+  .proof-row a:hover span{color:var(--fg)}
+  .proof-foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:14px;font-size:13px;color:var(--dim)}
+  .proof-foot a{color:var(--fg);border-bottom:1px solid var(--line-strong);padding-bottom:1px}
+  .proof-foot a:hover{border-color:var(--fg)}
+  @media(max-width:720px){.proof-row{grid-template-columns:1fr}.proof-row a,.proof-row a+a{padding:20px 0;border-left:0}.proof-row a+a{border-top:1px solid var(--line)}}
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important}
     .hero h1 .ln > span{transform:none}
@@ -309,6 +323,18 @@
       <div class="k"><span class="swatch sold"></span> sold out</div>
     </div>
     <div class="nodes" id="nodes"></div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof" aria-label="Players on our infrastructure">
+  <div class="wrap">
+    <div class="proof-row reveal">
+      <a href="/games.html#minecraft"><b>8M+</b><span>Minecraft players</span></a>
+      <a href="/games.html#rust"><b>450K+</b><span>Rust players</span></a>
+      <a href="/games.html#fivem"><b>200K+</b><span>FiveM players</span></a>
+    </div>
+    <div class="proof-foot reveal"><span>Unique players who have joined servers on our infrastructure.</span><a href="/games.html">Numbers by game</a></div>
   </div>
 </section>
 
