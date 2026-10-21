@@ -1,90 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>404 - Not Found</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8" />
-    <meta property="twitter:card" content="summary_large_image" />
-
-    <style data-tag="reset-style-sheet">
-      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
-    </style>
-    <style data-tag="default-style-sheet">
-      html {
-        font-family: Inter;
-        font-size: 16px;
-      }
-
-      body {
-        font-weight: 400;
-        font-style:normal;
-        text-decoration: none;
-        text-transform: none;
-        letter-spacing: normal;
-        line-height: 1.15;
-        color: var(--dl-color-gray-black);
-        background-color: var(--dl-color-gray-white);
-
-      }
-    </style>
-    <link
-      rel="shortcut icon"
-      href="public/favicon-32x32.png"
-      type="icon/png"
-      sizes="32x32"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
-    />
-    <style>
-      @keyframes fade-in-left {
-        0% {
-          opacity: 0;
-          transform: translateX(-20px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <link rel="stylesheet" href="./style.css" />
-    <div>
-      <link href="./404.css" rel="stylesheet" />
-
-      <div class="not-found-container">
-        <h3>OOPS! PAGE NOT FOUND</h3>
-        <div class="not-found-container1">
-          <h1 class="not-found-text1">404</h1>
-        </div>
-        <div class="not-found-container2">
-          <h2 class="not-found-text2">
-            WE ARE SORRY, BUT THE PAGE YOU REQUESTED WAS NOT FOUND
-          </h2>
-        </div>
-      </div>
-    </div>
-    <script
-      data-section-id="navbar"
-      src="https://unpkg.com/@teleporthq/teleport-custom-scripts"
-    ></script>
-  </body>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>404 | dread.cloud</title>
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#000000" />
+<link rel="icon" href="/favicon.png" type="image/png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet" />
+<style>
+  :root{--bg:#000;--fg:#fff;--dim:rgba(255,255,255,.52);--line:rgba(255,255,255,.14);
+    --pad:clamp(20px,5vw,72px);--font:'Archivo','Helvetica Neue',Arial,sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--fg);font-family:var(--font);font-variant-numeric:tabular-nums;
+    display:flex;flex-direction:column;overflow:hidden}
+  a{color:inherit;text-decoration:none}
+  #scrub{position:fixed;inset:0;width:100%;height:100%;opacity:.45;pointer-events:none}
+  header,main,footer{position:relative;z-index:2;padding-left:var(--pad);padding-right:var(--pad)}
+  header{height:60px;display:flex;align-items:center;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;font-stretch:118%}
+  .brand span{width:23px;height:23px;background:url(/mark.png) center/contain no-repeat}
+  main{flex:1;display:flex;flex-direction:column;justify-content:center}
+  h1{font-size:clamp(120px,32vw,400px);font-weight:900;font-stretch:62%;line-height:.82;letter-spacing:-.02em}
+  p{margin-top:28px;font-size:clamp(17px,2vw,22px);color:var(--dim);max-width:34ch;line-height:1.45}
+  .btn{display:inline-block;margin-top:30px;font-size:12.5px;font-stretch:118%;letter-spacing:.08em;text-transform:uppercase;
+    padding:14px 22px;background:var(--fg);color:var(--bg);border:1px solid var(--fg);transition:.22s;align-self:flex-start}
+  .btn:hover{background:transparent;color:var(--fg)}
+  .btn:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+  footer{padding-top:24px;padding-bottom:24px;border-top:1px solid var(--line);font-size:11.5px;font-stretch:118%;color:rgba(255,255,255,.3)}
+</style>
+</head>
+<body>
+<canvas id="scrub" aria-hidden="true"></canvas>
+<header><a href="/" class="brand"><span></span>dread.cloud</a></header>
+<main>
+  <h1>404</h1>
+  <p>This page got dropped at the filter. Whatever you were looking for isn't here.</p>
+  <a href="/" class="btn">Back to dread.cloud</a>
+</main>
+<footer>Est. August 2021</footer>
+<script>
+/* same packet filter as the homepage, except nothing gets through */
+(function(){
+  const c=document.getElementById("scrub"),x=c.getContext("2d");
+  const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches,LANE=16;
+  let W,H,lanes,fx,pk=[],drops=[];
+  function size(){const d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;
+    c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0);lanes=Math.floor(H/LANE);fx=Math.round(W*(W<720?.82:.72));}
+  function step(dt){
+    if(Math.random()<.35)pk.push({lane:(Math.random()*lanes)|0,x:-20,v:2+Math.random()*2.6,len:4+Math.random()*10});
+    for(const p of pk){p.x+=p.v*dt/16;if(p.x+p.len>=fx){p.dead=1;drops.push({lane:p.lane,a:1,o:Math.random()*6})}}
+    pk=pk.filter(p=>!p.dead);for(const d of drops)d.a-=dt/2200;drops=drops.filter(d=>d.a>0);
+  }
+  function draw(){
+    x.clearRect(0,0,W,H);x.fillStyle="rgba(255,255,255,.05)";
+    for(let i=0;i<lanes;i++)x.fillRect(0,i*LANE+LANE/2,fx,1);
+    x.fillStyle="rgba(255,255,255,.35)";x.fillRect(fx,0,1,H);
+    for(const d of drops){x.fillStyle=`rgba(255,255,255,${d.a*.6})`;x.fillRect(fx-3-d.o,d.lane*LANE+LANE/2-3,2,6)}
+    x.fillStyle="rgba(255,255,255,.45)";for(const p of pk)x.fillRect(p.x,p.lane*LANE+LANE/2,p.len,1);
+  }
+  size();addEventListener("resize",size);
+  if(reduce){for(let i=0;i<600;i++)step(16);draw();return}
+  let last=performance.now();
+  (function loop(t){const dt=Math.min(t-last,50);last=t;if(!document.hidden){step(dt);draw()}requestAnimationFrame(loop)})(last);
+})();
+</script>
+</body>
 </html>
