@@ -15,6 +15,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="theme-color" content="#000000" />
 <script>document.documentElement.classList.add('js')</script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
 <link rel="icon" href="favicon.png" type="image/png" />
 <link rel="preload" href="/archivo.woff2" as="font" type="font/woff2" crossorigin />
 <style>@font-face{font-family:'Archivo';src:url(/archivo.woff2) format('woff2');font-weight:300 900;font-stretch:62% 125%;font-display:swap}</style>
@@ -35,7 +36,7 @@
     --mono:'Archivo','Helvetica Neue',Arial,sans-serif;
     --mono-w:118%;   /* labels/specs: wide + tabular instead of a monospace */
     --head-w:68%;    /* headings: condensed */
-    --mark:url(./mark.png);
+    --mark:url(./mark.svg);
     --chip:url(./chip-tr.png);
   }
   /* light / inverted contrast mode */
@@ -196,18 +197,18 @@
   .tier li::before{content:"+";color:var(--fg)}
 
   /* ============ CONTACT ============ */
-  .contact{text-align:center;padding-top:clamp(70px,10vh,120px);position:relative;overflow:hidden}
-  .contact .wm{position:absolute;top:50%;left:50%;width:min(72vw,620px);aspect-ratio:1;
+  .contact{padding-top:clamp(70px,10vh,120px);position:relative;overflow:hidden}
+  .contact .wm{position:absolute;top:50%;left:84%;width:min(34vw,340px);aspect-ratio:1;
     transform:translate(-50%,-50%);background:var(--mark) center/contain no-repeat;
     opacity:.09;pointer-events:none;z-index:0;will-change:transform}
   html[data-contrast="light"] .contact .wm{filter:invert(1)}
   @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
   .contact .wrap{position:relative;z-index:1}
-  .contact h2{font-size:clamp(60px,16vw,220px);font-weight:900;font-stretch:62%;text-transform:uppercase;letter-spacing:-.02em;line-height:.86}
-  .contact h2 a{display:inline-block;transition:transform .3s}
-  .contact h2 a:hover{transform:scale(.98)}
-  .contact .sub{font-family:var(--mono);font-stretch:var(--mono-w);font-size:13px;letter-spacing:.1em;color:var(--dim);margin-top:26px;text-transform:uppercase}
-  .contact .chan{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+  .contact h2{font-size:clamp(40px,6.5vw,88px);font-weight:900;font-stretch:62%;text-transform:uppercase;letter-spacing:-.01em;line-height:.9}
+  .contact h2 a{display:inline-block;transition:opacity .2s;color:transparent;-webkit-text-stroke:1.5px var(--fg)}
+  .contact h2 a:hover{opacity:.75}
+  .contact .sub{font-size:clamp(16px,1.6vw,19px);color:var(--dim);margin-top:18px;max-width:40ch;line-height:1.5}
+  .contact .chan{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
 
   /* ============ FOOTER ============ */
   footer.foot{border-top:1px solid var(--line);margin-top:clamp(70px,10vh,120px);padding:30px 0}
@@ -344,10 +345,10 @@
 <section id="contact" class="contact">
   <div class="wm" aria-hidden="true"></div>
   <div class="wrap">
-    <h2 class="reveal"><a href="mailto:order@dread.cloud?subject=Access%20request">Request<br>access</a></h2>
-    <p class="sub reveal">invite only. capacity is limited. tell us who referred you.</p>
+    <h2 class="reveal"><a href="mailto:order@dread.cloud?subject=Access%20request">Request access</a></h2>
+    <p class="sub reveal">Invite only, and capacity is limited. Email us and tell us who referred you.</p>
     <div class="chan reveal">
-      <a href="mailto:order@dread.cloud" class="btn solid">order@dread.cloud</a>
+      <a href="mailto:order@dread.cloud?subject=Access%20request" class="btn solid">order@dread.cloud</a>
       <a href="https://discord.com/users/976753017858711552" target="_blank" rel="noreferrer" class="btn">Discord</a>
     </div>
   </div>
