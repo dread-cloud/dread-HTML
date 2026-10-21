@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Acceptable use | dread.cloud</title>
+<meta name="description" content="Acceptable use policy for dread.cloud services." />
+<meta name="theme-color" content="#000000" />
+<link rel="icon" href="/favicon.png" type="image/png" />
+<link rel="preload" href="/archivo.woff2" as="font" type="font/woff2" crossorigin />
+<style>
+  @font-face{font-family:'Archivo';src:url(/archivo.woff2) format('woff2');font-weight:300 900;font-stretch:62% 125%;font-display:swap}
+  :root{--bg:#000;--fg:#fff;--dim:rgba(255,255,255,.66);--line:rgba(255,255,255,.14);
+    --pad:clamp(20px,5vw,72px);--font:'Archivo','Helvetica Neue',Arial,sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--fg);font-family:var(--font);font-variant-numeric:tabular-nums;line-height:1.6}
+  a{color:inherit}
+  header,footer{padding:0 var(--pad);border-color:var(--line);border-style:solid;border-width:0}
+  header{height:60px;display:flex;align-items:center;justify-content:space-between;border-bottom-width:1px;position:sticky;top:0;
+    background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);z-index:5}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;font-stretch:118%;text-decoration:none}
+  .brand span{width:23px;height:23px;background:url(/mark.png) center/contain no-repeat}
+  nav{display:flex;gap:22px;font-size:12.5px;font-stretch:118%}
+  nav a{text-decoration:none;color:var(--dim)} nav a:hover,nav a[aria-current]{color:var(--fg)}
+  main{padding:clamp(56px,10vh,110px) var(--pad) 80px;max-width:calc(68ch + 2*var(--pad))}
+  h1{font-size:clamp(56px,11vw,128px);font-weight:900;font-stretch:62%;line-height:.86;text-transform:uppercase;letter-spacing:-.01em}
+  .meta{margin-top:22px;font-size:13px;font-stretch:118%;color:var(--dim)}
+  .intro{margin-top:36px;font-size:clamp(17px,1.8vw,20px);color:var(--fg)}
+  h2{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);font-size:clamp(24px,3vw,32px);font-weight:800;font-stretch:68%;line-height:1.05}
+  h3{margin-top:26px;font-size:17px;font-weight:700}
+  p,li{margin-top:12px;color:var(--dim);font-size:16px}
+  ul{padding-left:20px} li{padding-left:4px}
+  strong{color:var(--fg);font-weight:600}
+  table{margin-top:16px;border-collapse:collapse;width:100%;font-size:15px}
+  th,td{text-align:left;padding:10px 12px 10px 0;border-bottom:1px solid var(--line);color:var(--dim)}
+  th{color:var(--fg);font-weight:600}
+    footer{border-top-width:1px;padding-top:24px;padding-bottom:24px;font-size:12px;font-stretch:118%;color:rgba(255,255,255,.45);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  a:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+  @media(max-width:600px){nav{gap:14px}}
+</style>
+</head>
+<body>
+<header>
+  <a href="/" class="brand"><span></span>dread.cloud</a>
+  <nav><a href="/terms">terms</a><a href="/aup" aria-current="page">aup</a><a href="/sla">sla</a><a href="/privacy">privacy</a></nav>
+</header>
+<main>
+  <h1>Acceptable use</h1>
+  <p class="meta">Last updated 21 October 2026</p>
+  
+<p class="intro">This policy covers what you, and anyone using your services, can't do on dread.cloud infrastructure. You are responsible for your users, including the players on your game servers.</p>
+
+<h2>Not allowed</h2>
+<ul>
+<li>Anything illegal where the server is located, or where you are.</li>
+<li>Child sexual abuse material. We remove it, terminate the service immediately and report it to the authorities.</li>
+<li>Malware, botnets, command-and-control servers, phishing or credential theft.</li>
+<li>DDoS attacks, booter or stresser services, or any service that sells attacks.</li>
+<li>Scanning, probing or attacking systems you don't own or have permission to test.</li>
+<li>Spoofing IP addresses, or announcing IP space you aren't authorized to use.</li>
+<li>Unsolicited bulk email, or hosting anything advertised that way.</li>
+<li>Open proxies, open resolvers or open mail relays.</li>
+<li>Cryptocurrency mining, unless we approve it in writing.</li>
+<li>Content that infringes copyright or other intellectual property.</li>
+<li>Anything that degrades our network or other customers' services.</li>
+</ul>
+<p>Some datacenter partners have stricter rules for specific locations. If one applies to your service, we'll tell you.</p>
+
+<h2>Our infrastructure is off limits</h2>
+<p>Your access ends at your own service. You may not:</p>
+<ul>
+<li>Access, probe, scan or tamper with our network, hypervisors, management interfaces (including IPMI and BMC), or any other customer's service.</li>
+<li>Use any IP address that isn't assigned to you, spoof ARP or MAC addresses, or announce IP space through our network without written approval.</li>
+<li>Bypass, disable, test the limits of or fingerprint our DDoS mitigation, except during testing we've approved under "Security testing" below.</li>
+<li>Flash or modify BIOS, BMC, NIC or other firmware on bare metal hardware without our written approval.</li>
+</ul>
+<p><strong>Attempting any of these ends your service immediately, without notice or refund.</strong> Whether the attempt succeeded doesn't matter.</p>
+
+<h2>Keep our network details private</h2>
+<p>Don't publish or share our IP ranges, internal hostnames, network layout, or how our mitigation is configured, beyond what your own users need to connect to your services. Leaked backend details are how attackers get around protection, for you and for every other customer.</p>
+
+<h2>Security testing</h2>
+<p>Load testing and penetration testing against your own services is fine. Tell us at least 48 hours beforehand if it will generate significant traffic, so our mitigation doesn't treat it as an attack.</p>
+
+<h2>Abuse reports</h2>
+<p>When we receive an abuse report about your service, we forward it to you. You need to respond and resolve it within 24 hours. Serious cases, such as active attacks or illegal content, may be suspended immediately without waiting.</p>
+<p>Repeated violations lead to termination without a refund. Violations also make you responsible for the costs they cause us, as set out in our <a href="/terms">Terms</a>.</p>
+
+<h2>Report abuse</h2>
+<p>Send reports to <a href="mailto:abuse@dread.cloud">abuse@dread.cloud</a> with the IP address, timestamps with time zone, and any logs or evidence.</p>
+
+</main>
+<footer><span>BCR Hosting, operating as dread.cloud</span><span>Est. August 2021</span></footer>
+</body>
+</html>

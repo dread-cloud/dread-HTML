@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Service level agreement | dread.cloud</title>
+<meta name="description" content="Service level agreement and uptime credits for dread.cloud." />
+<meta name="theme-color" content="#000000" />
+<link rel="icon" href="/favicon.png" type="image/png" />
+<link rel="preload" href="/archivo.woff2" as="font" type="font/woff2" crossorigin />
+<style>
+  @font-face{font-family:'Archivo';src:url(/archivo.woff2) format('woff2');font-weight:300 900;font-stretch:62% 125%;font-display:swap}
+  :root{--bg:#000;--fg:#fff;--dim:rgba(255,255,255,.66);--line:rgba(255,255,255,.14);
+    --pad:clamp(20px,5vw,72px);--font:'Archivo','Helvetica Neue',Arial,sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--fg);font-family:var(--font);font-variant-numeric:tabular-nums;line-height:1.6}
+  a{color:inherit}
+  header,footer{padding:0 var(--pad);border-color:var(--line);border-style:solid;border-width:0}
+  header{height:60px;display:flex;align-items:center;justify-content:space-between;border-bottom-width:1px;position:sticky;top:0;
+    background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);z-index:5}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;font-stretch:118%;text-decoration:none}
+  .brand span{width:23px;height:23px;background:url(/mark.png) center/contain no-repeat}
+  nav{display:flex;gap:22px;font-size:12.5px;font-stretch:118%}
+  nav a{text-decoration:none;color:var(--dim)} nav a:hover,nav a[aria-current]{color:var(--fg)}
+  main{padding:clamp(56px,10vh,110px) var(--pad) 80px;max-width:calc(68ch + 2*var(--pad))}
+  h1{font-size:clamp(56px,11vw,128px);font-weight:900;font-stretch:62%;line-height:.86;text-transform:uppercase;letter-spacing:-.01em}
+  .meta{margin-top:22px;font-size:13px;font-stretch:118%;color:var(--dim)}
+  .intro{margin-top:36px;font-size:clamp(17px,1.8vw,20px);color:var(--fg)}
+  h2{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);font-size:clamp(24px,3vw,32px);font-weight:800;font-stretch:68%;line-height:1.05}
+  h3{margin-top:26px;font-size:17px;font-weight:700}
+  p,li{margin-top:12px;color:var(--dim);font-size:16px}
+  ul{padding-left:20px} li{padding-left:4px}
+  strong{color:var(--fg);font-weight:600}
+  table{margin-top:16px;border-collapse:collapse;width:100%;font-size:15px}
+  th,td{text-align:left;padding:10px 12px 10px 0;border-bottom:1px solid var(--line);color:var(--dim)}
+  th{color:var(--fg);font-weight:600}
+    footer{border-top-width:1px;padding-top:24px;padding-bottom:24px;font-size:12px;font-stretch:118%;color:rgba(255,255,255,.45);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  a:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+  @media(max-width:600px){nav{gap:14px}}
+</style>
+</head>
+<body>
+<header>
+  <a href="/" class="brand"><span></span>dread.cloud</a>
+  <nav><a href="/terms">terms</a><a href="/aup">aup</a><a href="/sla" aria-current="page">sla</a><a href="/privacy">privacy</a></nav>
+</header>
+<main>
+  <h1>Service level agreement</h1>
+  <p class="meta">Last updated 21 October 2026</p>
+  
+<p class="intro">We guarantee 99.99% monthly availability. If we miss it, you get service credits.</p>
+
+<h2>What's covered</h2>
+<p>Availability means your service has working power and network connectivity to our edge. It is measured per service, per calendar month.</p>
+<p>The SLA doesn't cover software, operating systems or configuration you run, since services are unmanaged.</p>
+
+<h2>What doesn't count as downtime</h2>
+<ul>
+<li>Scheduled maintenance announced at least 48 hours in advance.</li>
+<li>Problems caused by you, your software or your users.</li>
+<li>Attacks larger than available mitigation capacity, including filtering or null-routing done to protect the network.</li>
+<li>Suspensions, terminations or isolation of a service under the <a href="/terms">Terms</a> or <a href="/aup">AUP</a>.</li>
+<li>Events outside our reasonable control, such as natural disasters, regional carrier outages or government action.</li>
+</ul>
+
+<h2>Service credits</h2>
+<table>
+<thead><tr><th>Monthly availability</th><th>Credit</th></tr></thead>
+<tbody>
+<tr><td>Below 99.99%</td><td>5% of the monthly fee</td></tr>
+<tr><td>Below 99.9%</td><td>10%</td></tr>
+<tr><td>Below 99.5%</td><td>25%</td></tr>
+<tr><td>Below 99%</td><td>50%</td></tr>
+</tbody>
+</table>
+<p>Credits apply to the affected service only and can't exceed its monthly fee. They're applied to your next invoice and aren't paid out in cash.</p>
+
+<h2>Hardware replacement</h2>
+<p>If hardware fails, we aim to replace the failed component within 24 hours of confirming the fault. Time beyond that counts toward downtime.</p>
+
+<h2>Claiming a credit</h2>
+<p>Email <a href="mailto:order@dread.cloud">order@dread.cloud</a> within 30 days of the end of the affected month. Include the service ID and the approximate start and end times of the outage. Credits are your only remedy for missed availability.</p>
+
+</main>
+<footer><span>BCR Hosting, operating as dread.cloud</span><span>Est. August 2021</span></footer>
+</body>
+</html>

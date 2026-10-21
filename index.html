@@ -16,9 +16,8 @@
 <meta name="theme-color" content="#000000" />
 <script>document.documentElement.classList.add('js')</script>
 <link rel="icon" href="favicon.png" type="image/png" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet" />
+<link rel="preload" href="/archivo.woff2" as="font" type="font/woff2" crossorigin />
+<style>@font-face{font-family:'Archivo';src:url(/archivo.woff2) format('woff2');font-weight:300 900;font-stretch:62% 125%;font-display:swap}</style>
 <style>
   /* ============ TOKENS ============ */
   :root{
@@ -331,7 +330,7 @@
         <div class="name">Bare metal</div>
         <div class="from">from</div>
         <div class="amt">$2999<small>/mo</small></div>
-        <ul><li>Threadripper PRO 9995WX</li><li>5× NVMe Gen5</li><li>1+ Tbps DDoS</li></ul>
+        <ul><li>Threadripper PRO 9995WX</li><li>5× NVMe Gen5</li><li>2 Gbps uplink</li><li>1+ Tbps DDoS</li></ul>
       </div>
       <div class="tier">
         <div class="name">Enterprise</div>
@@ -362,7 +361,7 @@
   <div class="wrap foot-in">
     <span class="foot-brand"><span class="foot-mark"></span>dread.cloud, bare metal &amp; VPS</span>
     <div class="lks">
-      <a href="#what">what</a><a href="#machines">machines</a><a href="#pricing">pricing</a><a href="#contact">contact</a>
+      <a href="/terms">terms</a><a href="/aup">aup</a><a href="/sla">sla</a><a href="/privacy">privacy</a>
     </div>
     <span>Est. August 2021</span>
   </div>

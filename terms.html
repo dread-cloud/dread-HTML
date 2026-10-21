@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Terms of service | dread.cloud</title>
+<meta name="description" content="Terms of service for dread.cloud bare metal and VPS services." />
+<meta name="theme-color" content="#000000" />
+<link rel="icon" href="/favicon.png" type="image/png" />
+<link rel="preload" href="/archivo.woff2" as="font" type="font/woff2" crossorigin />
+<style>
+  @font-face{font-family:'Archivo';src:url(/archivo.woff2) format('woff2');font-weight:300 900;font-stretch:62% 125%;font-display:swap}
+  :root{--bg:#000;--fg:#fff;--dim:rgba(255,255,255,.66);--line:rgba(255,255,255,.14);
+    --pad:clamp(20px,5vw,72px);--font:'Archivo','Helvetica Neue',Arial,sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--fg);font-family:var(--font);font-variant-numeric:tabular-nums;line-height:1.6}
+  a{color:inherit}
+  header,footer{padding:0 var(--pad);border-color:var(--line);border-style:solid;border-width:0}
+  header{height:60px;display:flex;align-items:center;justify-content:space-between;border-bottom-width:1px;position:sticky;top:0;
+    background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);z-index:5}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;font-stretch:118%;text-decoration:none}
+  .brand span{width:23px;height:23px;background:url(/mark.png) center/contain no-repeat}
+  nav{display:flex;gap:22px;font-size:12.5px;font-stretch:118%}
+  nav a{text-decoration:none;color:var(--dim)} nav a:hover,nav a[aria-current]{color:var(--fg)}
+  main{padding:clamp(56px,10vh,110px) var(--pad) 80px;max-width:calc(68ch + 2*var(--pad))}
+  h1{font-size:clamp(56px,11vw,128px);font-weight:900;font-stretch:62%;line-height:.86;text-transform:uppercase;letter-spacing:-.01em}
+  .meta{margin-top:22px;font-size:13px;font-stretch:118%;color:var(--dim)}
+  .intro{margin-top:36px;font-size:clamp(17px,1.8vw,20px);color:var(--fg)}
+  h2{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);font-size:clamp(24px,3vw,32px);font-weight:800;font-stretch:68%;line-height:1.05}
+  h3{margin-top:26px;font-size:17px;font-weight:700}
+  p,li{margin-top:12px;color:var(--dim);font-size:16px}
+  ul{padding-left:20px} li{padding-left:4px}
+  strong{color:var(--fg);font-weight:600}
+  table{margin-top:16px;border-collapse:collapse;width:100%;font-size:15px}
+  th,td{text-align:left;padding:10px 12px 10px 0;border-bottom:1px solid var(--line);color:var(--dim)}
+  th{color:var(--fg);font-weight:600}
+    footer{border-top-width:1px;padding-top:24px;padding-bottom:24px;font-size:12px;font-stretch:118%;color:rgba(255,255,255,.45);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  a:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+  @media(max-width:600px){nav{gap:14px}}
+</style>
+</head>
+<body>
+<header>
+  <a href="/" class="brand"><span></span>dread.cloud</a>
+  <nav><a href="/terms" aria-current="page">terms</a><a href="/aup">aup</a><a href="/sla">sla</a><a href="/privacy">privacy</a></nav>
+</header>
+<main>
+  <h1>Terms of service</h1>
+  <p class="meta">Last updated 21 October 2026</p>
+  
+<p class="intro">These terms cover every service dread.cloud provides. By placing an order or using a service, you agree to them, along with our <a href="/aup">Acceptable Use Policy</a>, <a href="/sla">Service Level Agreement</a> and <a href="/privacy">Privacy Policy</a>.</p>
+
+<h2>1. Who we are</h2>
+<p>dread.cloud is operated by BCR Hosting ("dread.cloud", "we", "us"). "You" means the business or person who orders or uses a service.</p>
+
+<h2>2. Who can order</h2>
+<p>dread.cloud is invite only. We may accept or decline any order for any reason. Services are for business and professional use. By ordering, you confirm you are at least 18 and have authority to bind the business you order for.</p>
+
+<h2>3. The services</h2>
+<p>We provide bare metal servers, virtual machines, network connectivity and DDoS mitigation, as described in your order or invoice. If your order and these terms conflict, your order wins.</p>
+<p><strong>Services are unmanaged.</strong> We are responsible for hardware, power, cooling and our network. You are responsible for everything you run on the service, including the operating system, software, configuration, security patching, access credentials and your own backups.</p>
+<p>Backups we take of our own systems exist for disaster recovery. Unless your order says a backup service is included, we do not guarantee that we can restore your data.</p>
+
+<h2>4. Partners</h2>
+<p>We use third-party datacenters, network carriers and mitigation partners to deliver services. Their requirements may apply to you, and we will pass on any that do. During an attack larger than available mitigation capacity, we or our partners may filter or null-route affected IP addresses to protect the wider network.</p>
+
+<h2>5. Billing and payment</h2>
+<ul>
+<li>Prices are in US dollars and billed monthly in advance unless your order says otherwise.</li>
+<li>Invoices are due on receipt. Accepted payment methods are listed on your invoice.</li>
+<li>For cryptocurrency payments, the amount due is fixed in USD on the invoice. You cover any network or transaction fees, and an underpayment counts as unpaid.</li>
+<li>If an invoice is unpaid 7 days after its due date, we may suspend the service. If it is unpaid after 14 days, we may terminate it.</li>
+<li>Fees are non-refundable, except for <a href="/sla">SLA</a> credits or where the law requires a refund.</li>
+<li>Taxes, if any apply, are your responsibility unless stated on the invoice.</li>
+</ul>
+
+<h2>6. Term and cancellation</h2>
+<p>Each service runs for the term set in your order, such as 3 months, and renews automatically for the same term. If your order doesn't set a term, the service renews month to month.</p>
+<p>To cancel, email us at least 60 days before the end of your current term. We can end a service with the same notice.</p>
+<p>When a service ends, we wipe the hardware and delete your data after 14 days. Retrieve anything you need before then.</p>
+
+<h2>7. Suspension</h2>
+<p>We may suspend a service, with notice where practical, if:</p>
+<ul>
+<li>you breach these terms or the AUP,</li>
+<li>an invoice is overdue,</li>
+<li>your service is sending or receiving traffic that threatens our network or other customers, or</li>
+<li>we are legally required to.</li>
+</ul>
+<p>We restore service once the issue is resolved. Suspensions for these reasons do not count as downtime under the SLA.</p>
+<p>Any attempt to access, attack or interfere with our infrastructure or another customer's service is grounds for immediate termination without notice or refund.</p>
+
+<h2>8. Resale</h2>
+<p>You can run services for your own players, users and community. You may not resell, sublease or otherwise provide a service, or any part of it, to another business without our written approval. Access to dread.cloud is invite only, and that includes access through a third party.</p>
+
+<h2>9. Hardware</h2>
+<p>Hardware remains our property. If you damage it, or make it unusable through unapproved firmware or configuration changes, you pay for the repair or replacement and any related labor.</p>
+
+<h2>10. Security incidents</h2>
+<p>If your service is compromised, or is used to attack or harm anyone, we may isolate it from the network immediately. You must cooperate with our investigation, including providing relevant logs and access, and fix the issue before the service is restored. Isolation for this reason does not count as downtime under the SLA.</p>
+
+<h2>11. Cost recovery</h2>
+<p>If you breach these terms or the AUP, you pay the reasonable costs that breach causes us. These include incident response, charges or penalties from our upstream providers, removing our IP addresses from blacklists, hardware repair, and reasonable legal fees. We may invoice these costs separately or deduct them from any amounts we owe you.</p>
+
+<h2>12. Your data and software</h2>
+<p>You own your data. We only access it when you ask us to, when it is needed to operate or protect the service, or when the law requires it. Third-party software we supply or install is covered by its own license.</p>
+
+<h2>13. Warranties</h2>
+<p>Apart from the commitments in the SLA, services are provided as is. We do not promise that services will be error-free or uninterrupted, or that they fit a particular purpose.</p>
+
+<h2>14. Liability</h2>
+<p>Neither side is liable for indirect or consequential losses, including lost profits, revenue, players or data. Our total liability for any claim is limited to the fees you paid for the affected service in the 3 months before the claim. This section does not limit your obligation to pay fees, or your responsibilities under the Resale, Hardware, Cost recovery and Indemnity sections. Nothing here limits liability that cannot be limited by law.</p>
+
+<h2>15. Indemnity</h2>
+<p>You will cover our reasonable costs from third-party claims caused by your content, your users, or your breach of these terms or the AUP.</p>
+
+<h2>16. Changes</h2>
+<p>We may update these terms. For material changes, we will email you at least 30 days before they take effect. Continuing to use a service after that date means you accept the new terms.</p>
+
+<h2>17. Governing law</h2>
+<p>These terms are governed by the laws of the Commonwealth of Virginia, USA. Disputes go to the courts of the Circuit Court of Loudoun County, Virginia, unless the law where you are based gives you a right to bring them elsewhere.</p>
+
+<h2>18. Contact</h2>
+<p>Orders and billing: <a href="mailto:order@dread.cloud">order@dread.cloud</a>. Abuse reports: <a href="mailto:abuse@dread.cloud">abuse@dread.cloud</a>.</p>
+
+</main>
+<footer><span>BCR Hosting, operating as dread.cloud</span><span>Est. August 2021</span></footer>
+</body>
+</html>
